@@ -11,6 +11,7 @@ public class Product {
     private String name;
     private Category category;
     private BigDecimal price;
+    private String image;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,6 +42,16 @@ public class Product {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    @Basic
+    @Column(name = "image")
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     @Override

@@ -67,12 +67,15 @@
 
     <%@ include file="pagination.jsp" %>
 
+    <%--
+    <!-- naudosime del idomumo ne table elementa, o bootstrap card (https://getbootstrap.com/docs/4.1/components/card/) -->
     <table class="table">
         <tr>
             <th>#</th>
             <th>Product</th>
             <th>Category</th>
             <th class="text-right">Price</th>
+            <th></th>
             <th></th>
         </tr>
 
@@ -85,18 +88,39 @@
                 <td>${p.category.name}</td>
                 <td class="text-right">${p.price}</td>
                 <td>
-                    <!-- a class="btn btn-primary" href="cart/add?id=${p.id}" role="button">Add</a -->
+                    <img height="100" src="${pageContext.servletContext.contextPath}/images/${p.image}">
+                </td>
+                <td>
                     <a class="btn btn-primary" href="#" role="button" onclick="add(${p.id})">Add</a>
                 </td>
 
             </tr>
 
             <c:set var="index" value="${index + 1}" scope="page"/>
-
         </c:forEach>
 
     </table>
+    --%>
 
+    <div class="card-columns">
+        <c:forEach var="p" items="${products}">
+
+            <div class="card">
+                <c:if test="${p.image != null}">
+                    <img class="card-img-top" width="150" src="${pageContext.servletContext.contextPath}/images/${p.image}">
+                </c:if>
+                <div class="card-body">
+                    <h5 class="card-title">${p.name}</h5>
+                    <p class="card-text">Kaina: ${p.price}</p>
+                    <a href="#" onclick="add(${p.id})" class="btn btn-primary">Į krepšelį</a>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Kategorija: ${p.category.name}</small>
+                </div>
+            </div>
+
+        </c:forEach>
+    </div>
 
 
 </div>

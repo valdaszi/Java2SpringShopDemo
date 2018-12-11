@@ -25,6 +25,8 @@ CREATE TABLE `product` (
   `name` varchar(100) COLLATE utf8_lithuanian_ci NOT NULL,
   `category_id` int(11) DEFAULT NULL,
   `price` decimal(10,2) DEFAULT NULL,
+  `name` varchar(100) COLLATE utf8_lithuanian_ci NOT NULL,
+  `image` varchar(100) COLLATE utf8_lithuanian_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_prod_cat_idx` (`category_id`),
   CONSTRAINT `FK_prod_cat` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -56,7 +58,7 @@ INSERT INTO `category` (`id`,`name`) VALUES (2,'Laivai');
 INSERT INTO `category` (`id`,`name`) VALUES (3,'Lektuvai');
 INSERT INTO `category` (`id`,`name`) VALUES (4,'Automobiliai');
 
-INSERT INTO `product` (`id`,`name`,`category_id`,`price`) VALUES (1,'Antanas',1,900.00);
+INSERT INTO `product` (`id`,`name`,`category_id`,`price`) VALUES (1,'Yomayo',1,900.00);
 INSERT INTO `product` (`id`,`name`,`category_id`,`price`) VALUES (2,'Birute',1,1200.00);
 INSERT INTO `product` (`id`,`name`,`category_id`,`price`) VALUES (3,'Maryte',1,800.00);
 INSERT INTO `product` (`id`,`name`,`category_id`,`price`) VALUES (4,'Titanikas',2,2000000.00);
